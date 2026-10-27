@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14202e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>MeoloVEND</title>
+  <link rel="icon" href="symbol.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+  <div id="login" class="login" hidden>
+    <form class="panel stack" id="loginForm">
+      <div class="brand big"><img src="symbol.svg" alt=""><span>Meolo<b>VEND</b></span></div>
+      <p class="muted">Automatenverwaltung</p>
+      <label>Benutzername <input name="login" autocomplete="username" required autofocus></label>
+      <label>Passwort <input name="passwort" type="password" autocomplete="current-password" required></label>
+      <p class="err-text" id="loginErr" hidden></p>
+      <button class="primary">Anmelden</button>
+    </form>
+  </div>
+  <div id="shell" hidden>
+    <aside id="side">
+      <div class="brand"><img src="symbol.svg" alt=""><span>Meolo<b>VEND</b></span></div>
+      <nav id="nav"></nav>
+      <div class="side-foot"><span id="who"></span> · <a href="#/ich">Konto</a> · <button class="link" id="themeBtn" type="button" title="Hell oder dunkel">◐</button> · <button class="link" id="logoutBtn" type="button">Abmelden</button><div class="muted small" id="ver"></div></div>
+    </aside>
+    <div id="mainWrap">
+      <header id="top"><button class="icon" id="menuBtn" type="button" aria-label="Menü">☰</button><h1 id="title"></h1><div class="spacer"></div><div id="actions" class="row"></div></header>
+      <main id="app"></main>
+    </div>
+  </div>
+  <div id="modal" class="modal" hidden><div class="modal-box"><div class="modal-head"><h2 id="modalTitle"></h2><button class="icon" id="modalClose" type="button" aria-label="Schließen">✕</button></div><div id="modalBody"></div></div></div>
+  <div id="toast" hidden></div>
+  <script src="app.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/automaten.js"></script>
+  <script src="js/waren.js"></script>
+  <script src="js/touren.js"></script>
+  <script src="js/einnahmen.js"></script>
+  <script src="js/rabatte.js"></script>
+  <script src="js/auswertungen.js"></script>
+  <script src="js/system.js"></script>
+  <script src="js/start.js"></script>
+</body>
+</html>

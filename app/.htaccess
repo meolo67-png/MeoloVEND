@@ -1,0 +1,18 @@
+# MeoloVEND – Schutz interner Dateien (Apache 2.4)
+DirectoryIndex index.html
+<FilesMatch "^(config\.php|.*\.md)$">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 ^.*/(lib|daten)/
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "same-origin"
+  <FilesMatch "\.(html|js|css)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+# Kopfzeile Authorization an PHP weitergeben (manche Hoster filtern sie sonst)
+<IfModule mod_setenvif.c>
+  SetEnvIf Authorization "(.+)" HTTP_AUTHORIZATION=$1
+</IfModule>
