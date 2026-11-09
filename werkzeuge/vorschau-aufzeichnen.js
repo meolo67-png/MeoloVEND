@@ -19,7 +19,7 @@ const fs = require('fs');
   });
   const errs = [];
   p.on('pageerror', e => errs.push(e.message));
-  await p.goto('' + (process.env.MV_URL || 'http://127.0.0.1:8091/') + '');
+  await p.goto(process.env.MV_URL || 'http://127.0.0.1:8091/');
   await p.fill('input[name=login]', 'admin'); await p.fill('input[name=passwort]', 'geheim123');
   await p.click('#loginForm button'); await p.waitForSelector('#nav a');
   const go = async (h, w = 700) => { await p.evaluate(x => location.hash = x, h); await p.waitForTimeout(w); };
@@ -56,7 +56,7 @@ const fs = require('fs');
   await go('#/einnahmen', 600);
   for (const g of ['kunde','tour','mitarbeiter','tag','monat']) { await p.selectOption('#gr', g); await p.waitForTimeout(400); }
   const rec = await p.evaluate(() => window.__rec);
-  fs.writeFileSync('' + (process.argv[2] || 'rec.json') + '', JSON.stringify(rec));
+  fs.writeFileSync(process.argv[2] || 'rec.json', JSON.stringify(rec));
   console.log(Object.keys(rec).length, 'Antworten', JSON.stringify(rec).length, 'Bytes', errs.join('|'));
   await b.close();
 })();
